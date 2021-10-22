@@ -35,10 +35,10 @@ void setup()
    //Define tamanho da tela
    size(800, 800);
 
-   //Imprime a tela inicial
+   // Imprime a tela inicial
    telaInicial();
 
-   //Inicia a tela de execução e 
+   // Inicia a tela de execução e 
    iniciaTelaDeExecucao();
 }
 
@@ -51,8 +51,8 @@ void draw()
 //==========================================================
 // Funcão que cria o grid e coloca as respectivas posições
 //==========================================================
-int[][] criaMapa(int tam){
-
+int[][] criaMapa(int tam)
+{
    //define grid = matr[tam][tam]
    int[][] grid = new int[tam][tam];
 
@@ -139,10 +139,9 @@ int[][] criaMapa(int tam){
    return grid;
 }
 
-
-//===================================================
-// Funções do Wave Front
-//===================================================
+//=======================//
+// Funções do Wave Front //
+//=======================//
 void wavefrontMovement()
 {
    //verifica para onde o player deve ir
@@ -173,17 +172,23 @@ void wavefrontMovement()
 		{
 			playerPositionY--;
 		}
+
+      //salva o frame
+      saveFrame("wavefront-####.png");
    }
 }
 
 int propagateWavefront(int playerX, int playerY)
 {
+   //limpa e atualiza as posições
    unpropagateWavefront(playerPositionX, playerPositionY);
+
 
    gridGlobal[goalPositionX][goalPositionY] = goalValue;
 
    int counter = 0;
 
+   //verifica e coloca os devidos valores dentro de cada espaço da matriz
    while(counter < 50)
    {
       int x = 0;
@@ -220,6 +225,7 @@ int propagateWavefront(int playerX, int playerY)
 
 void unpropagateWavefront(int playerX, int playerY)
 {
+   //limpa espaços que não serão usados
    for(int x = 0; x < gridSize; x++)
    {
       for(int y = 0; y < gridSize; y++)
@@ -230,7 +236,7 @@ void unpropagateWavefront(int playerX, int playerY)
          }
       }
    }
-
+   
    gridGlobal[playerPositionX][playerPositionY] = playerValue;
 }
 
@@ -281,7 +287,6 @@ int verificaValoresPorPerto(int x, int y)
 	return minimumNode;
 }
 
-
 //========================================================//
 // Funções de Impressão / Atualização / Coloração do grid //
 //========================================================//
@@ -316,14 +321,19 @@ void imprimeGridAtualizado()
          else if(gridGlobal[i][j] == nothingValue) fill(255);    //Espaco Livre
          else if(gridGlobal[i][j] == playerValue) fill(#FF0000); //Player
          else if(gridGlobal[i][j] == goalValue) fill(#008000);   //Goal
-         else fill(255);
+         else fill(#ADD8E6);;
 
          //Desenha as linhas quadriculadas
          rect(x, y, gridWidth, gridHeight);
          fill(0);
 
          // Imprime o valor de cada quadrado em seu respectivo lugar
-         textSize(10);
+         //Ajusta tamanho da letra de acordo com o tamanho do grid
+         if(gridSize > 0 && gridSize <= 10) textSize(20);
+         else if(gridSize > 10 && gridSize <= 20) textSize(15);
+         else if(gridSize > 20 && gridSize <= 30) textSize(10);
+         else if(gridSize >= 50) textSize(5);
+         
          textAlign(CENTER,CENTER);
          text(gridGlobal[i][j], x+gridWidth/2, y+gridHeight/2);
       }
