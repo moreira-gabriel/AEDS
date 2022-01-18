@@ -3,7 +3,8 @@
  * Gabriel Moreira Silva
  */
 
-public class Main 
+
+public class Main
 {
     public static void main(String[] args) 
     {
@@ -14,7 +15,7 @@ public class Main
         c1 = c1.adicionarElemento(2);
         c1 = c1.adicionarElemento(3);
         c1 = c1.adicionarElemento(4);
-        c1 = c1.adicionarElemento(5);
+        c1 = c1.adicionarElemento(5); 
  
         Conjunto<Integer> c2 = new ConjuntoVazio<>();
 
