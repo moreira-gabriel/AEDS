@@ -56,3 +56,24 @@ public class Main
         System.out.println(c6.contemElemento(7)? "7 ∈ c6" :"7 ∉ c6");
     }
 }
+
+        // c1 = {1,2,3,4,5}
+        // c2 = {1,3,5,7,9}
+        // c3 = (c1 U c2) = {1,2,3,4,5,7,9}
+        // c4 = c1 ∩ c2 = {1, 3, 5}
+        // c5 = c1 - c2 = {2, 4}
+        // c6 = complemento(c1) = conjuntoUniverso - c1
+
+
+        // 2 ∈ c1
+        // 7 ∉ c1
+        // 7 ∈ c2
+        // 8 ∉ c2
+        // 5 ∈ c3
+        // 6 ∉ c3
+        // 3 ∈ c4
+        // 4 ∉ c4
+        // 3 ∉ c5
+        // 4 ∈ c5
+        // 2 ∉ c6
+        // 7 ∈ c6
